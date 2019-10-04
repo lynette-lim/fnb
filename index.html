@@ -20,7 +20,32 @@
 <body>
 
     <h1>Singapore F&B Directory</h1>
-
+  
+  <div class="container-fluid col-lg-8 col-sm-12 pb-3" id="selectors">
+  <label>Select Region:</label><br>
+  <select id="userOptionRegion">
+    <option value="none">Region</option>
+    <option value="central">Central</option>
+    <option value="north">North</option>
+    <option value="south">South</option>
+    <option value="east">East</option>
+    <option value="west">West</option>
+  </select>
+  <br>
+ <label>Select Establishment Type:</label><br>
+  <select id="userOptionType">
+    <option value="none">Type</option>
+    <option value="fastfood">Fast food</option>
+    <option value="foodcourt">Food Court</option>
+    <option value="hawker">Hawker Centre</option>
+    <option value="restaurant">Restaurant</option>
+    <option value="cafe">Café</option>
+    <option value="pubBar">Pub & Bar</option>
+  </select>
+  </div>
+  
+    <div class="container-fluid col-lg-8 col-sm-12" id='map'>
+    </div>
 
 
     <!-- Optional JavaScript -->
