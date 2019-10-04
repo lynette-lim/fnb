@@ -1,7 +1,5 @@
 /* global axios */
 /* global $*/
-/* global mapboxgl */
-/* global response */
 
 // define frequently used constants
 const API_URL = 'https://api.foursquare.com/v2';
@@ -29,88 +27,83 @@ let types = {
 
 //Cuisines
 let cuisines = {
-  // 'Chinese' : 'chinese',
-  // 'Malay' : 'malay',
-  // 'Indian' : 'indian',
-  // 'Indonesian' : 'indonesian',
-  // 'Japanese' : 'japanese',
-  // 'Korean' : 'korean',
-  // 'Thai' : 'thai',
-  // 'European' : 'european',
-  // 'French' : 'french',
-  // 'German' : 'german',
-  // 'Italian' : 'italian'
-"	Japanese	":"	Japanese	",
-"	Chinese	":"	Chinese	",
-"	Asian Fusion	":"	Asian Fusion	",
-"	Singaporean	":"	Singaporean	",
-"	Indian	":"	Indian	",
-"	Thai	":"	Thai	",
-"	Korean	":"	Korean	",
-"	Cantonese	":"	Cantonese	",
-"	Indonesian	":"	Indonesian	",
-"	Vietnamese	":"	Vietnamese	",
-"	Szechuan	":"	Szechuan	",
-"	Malaysian	":"	Malaysian	",
-"	Taiwanese	":"	Taiwanese	",
-"	Shanghainese	":"	Shanghainese	",
-"	Italian	":"	Italian	",
-"	American	":"	American	",
-"	French	":"	French	",
-"	European	":"	European	",
-"	Middle Eastern	":"	Middle Eastern	",
-"	Mediterranean	":"	Mediterranean	",
-"	Mexican	":"	Mexican	",
-"	Spanish	":"	Spanish	",
-"	Turkish	":"	Turkish	",
-"	German	":"	German	",
-"	Lebanese	":"	Lebanese	",
-"	Wine	":"	Wine	",
-"	Beer	":"	Beer	",
-"	Cocktail	":"	Cocktail	",
-"	Coffee	":"	Coffee	",
-"	Tea	":"	Tea	",
-"	Juice	":"	Juice	",
-"	Seafood	":"	Seafood	",
-"	Sushi	":"	Sushi	",
-"	Breakfast	":"	Breakfast	",
-"	Brunch	":"	Brunch	",
-"	Ramen	":"	Ramen	",
-"	Dessert	":"	Dessert	",
-"	Salad	":"	Salad	",
-"	Dim Sum	":"	Dim Sum	",
-"	Pizza	":"	Pizza	",
-"	Burgers	":"	Burgers	",
-"	Sandwiches	":"	Sandwiches	",
-"	Dessert	":"	Dessert	",
-"	Ice Cream	":"	Ice Cream	",
-"	Frozen Yogurt	":"	Frozen Yogurt	",
-"	Soup	":"	Soup	",
-"	Buffet	":"	Buffet	",
-"	Steakhouse	":"	Steakhouse	",
-"	Barbeque	":"	Barbeque	",
-"	Noodles	":"	Noodles	",
-"	Bubble Tea	":"	Bubble Tea	",
-"	Tapas/Small Plates	":"	Tapas/Small Plates	",
-"	Hot Pot	":"	Hot Pot	",
-"	Izakaya	":"	Izakaya	",
-"	Chicken	":"	Chicken	",
-"	Fish & Chips	":"	Fish & Chips	",
-"	Kebab	":"	Kebab	",
-"	Patisserie	":"	Patisserie	",
-"	Cake	":"	Cake	",
-"	Chicken Wings	":"	Chicken Wings	",
-"	Creperies	":"	Creperies	",
-"	Vegan	":"	Vegan	",
-"	Vegetarian	":"	Vegetarian	",
-"	Halal	":"	Halal	"
+'Bakery':'bakery',
+'Cafe':'cafe café',
+'Fast food':'fast food',
+'Hawker Centre':'hawkercentre',
+'Pub & Bar':'pub bar',
+'Restaurant':'restaurant',
+'Japanese':'Japanese',
+'Chinese':'Chinese',
+'Asian Fusion':'Asian Fusion',
+'Singaporean':'Singaporean',
+'Indian':'Indian',
+'Thai':'Thai',
+'Korean':'Korean',
+'Cantonese':'Cantonese',
+'Indonesian':'Indonesian',
+'Vietnamese':'Vietnamese',
+'Szechuan':'Szechuan',
+'Malaysian':'Malaysian',
+'Taiwanese':'Taiwanese',
+'Shanghainese':'Shanghainese',
+'Italian':'Italian',
+'American':'American',
+'French':'French',
+'European':'European',
+'Middle Eastern':'Middle Eastern',
+'Mediterranean':'Mediterranean',
+'Mexican':'Mexican',
+'Spanish':'Spanish',
+'Turkish':'Turkish',
+'German':'German',
+'Lebanese':'Lebanese',
+'Wine':'Wine',
+'Beer':'Beer',
+'Cocktail':'Cocktail',
+'Coffee':'Coffee',
+'Tea':'Tea',
+'Juice':'Juice',
+'Seafood':'Seafood',
+'Sushi':'Sushi',
+'Breakfast':'Breakfast',
+'Brunch':'Brunch',
+'Ramen':'Ramen',
+'Dessert':'Dessert',
+'Salad':'Salad',
+'Dim Sum':'Dim Sum',
+'Pizza':'Pizza',
+'Burgers':'Burgers',
+'Sandwiches':'Sandwiches',
+'Dessert':'Dessert',
+'IceCream':'IceCream',
+'Frozen Yogurt':'Frozen Yogurt',
+'Soup':'Soup',
+'Buffet':'Buffet',
+'Steakhouse':'Steakhouse',
+'Barbeque':'Barbeque',
+'Noodles':'Noodles',
+'Bubble Tea':'Bubble Tea',
+'Tapas/Small Plates':'Tapas',
+'HotPot':'HotPot',
+'Izakaya':'Izakaya',
+'Chicken':'Chicken',
+'Fish & Chips':'Fish & Chips',
+'Kebab':'Kebab',
+'Patisserie':'Patisserie',
+'Cake':'Cake',
+'Chicken Wings':'Chicken Wings',
+'Creperies':'Creperies',
+'Vegan':'Vegan',
+'Vegetarian':'Vegetarian',
+'Halal':'Halal'
 }
 
 
 
 // define object terms
 let region_code = $('#userOptionRegion').val();
-let type_code = $('#userOptionType').val();
+// type_code = $('#userOptionType').val();
 let cuisine_code = $('#userInputCuisine').val();
 
 //test Foursquare API
@@ -164,6 +157,14 @@ $(function () {
     }
   });
   var data = [
+{label:"Bakery", category:"Establishment Type"},
+{label:"Café", category:"Establishment Type"},
+{label:"Fast food", category:"Establishment Type"},
+{label:"Food Court", category:"Establishment Type"},
+{label:"Hawker Centre", category:"Establishment Type"},
+//test pub if PUB East
+{label:"Pub & Bar", category:"Establishment Type"},
+{label:"Restaurant", category:"Establishment Type"},
 {label:"Japanese",category:"Asian"},
 {label:"Chinese",category:"Asian"},
 {label:"Asian Fusion",category:"Asian"},
@@ -228,7 +229,6 @@ $(function () {
 {label:"Vegan",category:"Dietary Options"},
 {label:"Vegetarian",category:"Dietary Options"},
 {label:"Halal",category:"Dietary Options"}
-
   ];
 
   $("#userInputCuisine").catcomplete({
@@ -255,7 +255,7 @@ function setupMap() {
 }
 
 
-//To test Mapbox Settings
+//To test Mapbox Settings DELETE LATER
 function getFastFood() {
   axios.get(API_URL + "/venues/search", {
     params: {
@@ -342,8 +342,8 @@ $(function () {
   // To trigger Cuisine change via Cuisine Searhbox HTML
   $('#userInputCuisine').change(function () {
     let center = map.getCenter();
-    let cuisine_code = $('#userInputCuisine').val();
-    let type_code = $('#userOptionType').val();
+    cuisine_code = $('#userInputCuisine').val();
+    type_code = $('#userOptionType').val();
     console.log(cuisines[cuisine_code]);
 
     axios.get(API_URL + "/venues/explore", {
@@ -392,34 +392,32 @@ $(function () {
 
 
 
+// //DECLARE PRINTMARKERS FUNCTION
+// function printMarkers() {
+//       $("#results").empty();
 
 
-//DECLARE PRINTMARKERS FUNCTION
-function printMarkers() {
-      $("#results").empty();
+//       for (let each_marker of all_markers) {
+//         each_marker.remove();
+//       }
 
+//   all_markers = [];
 
-      for (let each_marker of all_markers) {
-        each_marker.remove();
-      }
+//   let results = response.data.response.groups[0].items;
+//       for (let each_result of results) {
+//         let marker = new mapboxgl.Marker();
+//         marker.setLngLat([each_result.venue.location.lng, each_result.venue.location.lat]);
+//         marker.addTo(map); // <-- map is a global variable holding the mapboxgl Map object
 
-  all_markers = [];
+//         let popup = new mapboxgl.Popup({
+//           offset: 25
+//         });
 
-  let results = response.data.response.groups[0].items;
-      for (let each_result of results) {
-        let marker = new mapboxgl.Marker();
-        marker.setLngLat([each_result.venue.location.lng, each_result.venue.location.lat]);
-        marker.addTo(map); // <-- map is a global variable holding the mapboxgl Map object
+//         popup.setHTML(each_result.venue.name);
 
-        let popup = new mapboxgl.Popup({
-          offset: 25
-        });
+//         marker.setPopup(popup);
 
-        popup.setHTML(each_result.venue.name);
+//         all_markers.push(marker);
 
-        marker.setPopup(popup);
-
-        all_markers.push(marker);
-
-      }
-}
+//       }
+// }
