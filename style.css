@@ -1,0 +1,39 @@
+#userInputCuisine {
+  background-image: url('images/searchicon.png'); /* Add a search icon to input */
+  background-position: 10px 12px; /* Position the search icon */
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  width: 100%; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+}
+
+.ui-autocomplete {
+    max-height: 200px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+}
+/* IE 6 doesn't support max-height
+			 * we use height instead, but this forces the menu to always be this tall
+			 */
+ * html .ui-autocomplete {
+    height: 100px;
+}
+.ui-autocomplete .highlight {
+    text-decoration: underline;
+}
+.ui-autocomplete-category {
+    font-weight: bold;
+    padding: .2em .4em;
+    margin: .8em 0 .2em;
+    line-height: 1.5;
+}
+.ui-autocomplete .ui-autocomplete-category:focus {
+    font-weight: normal;
+}
+
+#map {
+    height: 600px;
+}
