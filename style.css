@@ -1,4 +1,4 @@
-#userInputCuisine {
+#userInputCuisine, #userInputLocation {
   background-image: url('images/searchicon.png'); /* Add a search icon to input */
   background-position: 10px 12px; /* Position the search icon */
   background-repeat: no-repeat; /* Do not repeat the icon image */
@@ -36,4 +36,12 @@
 
 #map {
     height: 600px;
+}
+
+
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  background-color: pink;
 }

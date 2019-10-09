@@ -21,28 +21,26 @@
 
   <div class="container-fluid col-lg-8 col-sm-12 pb-3" id="selectors">
   <h1>Singapore F&B Directory</h1>
-  <label>Select Region:</label><br>
-  <select id="userOptionRegion">
-    <option value="none">Region</option>
-    <option value="central">Central</option>
-    <option value="north">North</option>
-    <option value="south">South</option>
-    <option value="east">East</option>
-    <option value="west">West</option>
-  </select>
+  <label>Enter Nearest MRT or Region:</label><br>
+  <input id="userInputLocation" placeholder="Enter Location">
   <br>
     <!-- autocomplete HTML -->
 <label for="userInputCuisine">Enter Cuisine:</label>
 <br>
-<input id="userInputCuisine" value='' placeholder="Search Cuisine">
-</div>
-<button id="button">Go</button>
+<input id="userInputCuisine" placeholder="Search Cuisine">
+<button id="buttonCuisine">Search</button>
 
 
 </div>
 
     <div class="container-fluid col-lg-8 col-sm-12" id='map'>
     </div>
+    
+<div id="results">
+</div>
+
+
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -50,7 +48,7 @@
     <!-- jQuery UI -->  
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
-
+ 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script>
