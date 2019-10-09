@@ -724,70 +724,21 @@ $(document).on('click', '.redirectmarker', function() {
   marker.togglePopup();
 });
 
+  $('#buttonReset').click(function() {
+    $('#userInputLocation').val('');
+    $('#userInputCuisine').val('');
+    
+  map.flyTo({
+    container: 'map', // which html element it should be
+    style: 'mapbox://styles/mapbox/streets-v11', // how it should look like
+    center: [103.8300, 1.3554], // where should be the map be centered at
+    zoom: 2, // how zoomed we are
+    maxBounds: bounds
+  })
+  
+        for (let each_marker of all_markers) {
+        each_marker.remove();
+      }
 
-// function createPopUp(r) {
-//   var popUps = document.getElementsByClassName('mapboxgl-popup');
-//   // Check if there is already a popup on the map and if so, remove it
-//   if (popUps[0]) popUps[0].remove();
-
-//   var popup = new mapboxgl.Popup({ closeOnClick: false })
-//     .setLngLat(r.geometry.coordinates)
-//     .setHTML("<span><b>" + r.venue.name + "</b></span>" +
-//           "<img src=" + r.venue.categories[0].icon.prefix + "32" + r.venue.categories[0].icon.suffix + ">" +
-//           "<p>" + r.venue.location.formattedAddress[0] +
-//           "<br>Singapore " + r.venue.location.formattedAddress[1] + "</p>")
-//     .addTo(map);
-// }
-
-
-
-
-// // Add an event listener for the links in the sidebar listing
-// link.addEventListener('click', function(e) {
-//   // Update the currentFeature to the store associated with the clicked link
-//   var clickedListing = data.features[this.dataPosition];
-//   // 1. Fly to the point associated with the clicked link
-//   flyToStore(clickedListing);
-//   // 2. Close all other popups and display popup for clicked store
-//   createPopUp(clickedListing);
-//   // 3. Highlight listing in sidebar (and remove highlight for all other listings)
-//   var activeItem = document.getElementsByClassName('active');
-//   if (activeItem[0]) {
-//     activeItem[0].classList.remove('active');
-//   }
-//   this.parentNode.classList.add('active');
-// });
-
-
-//json path for BAKERY
-//https://api.foursquare.com/v2/venues/explore?client_id=MBW5E3D455SVF2HV2BPEB2TJG21XCZTA3WDAZ4U5I4PMPLCZ&client_secret=ETY2MWRODHNEDLP3MGGWKFX0AM1TLAA0XHZ5HW0S1YNTL2AA&v=20192609&limit=50&ll=1.2933,103.7831&query=bakery
-
-// //DECLARE PRINTMARKERS FUNCTION
-// function printMarkers() {
-//       $("#results").empty();
-
-
-//       for (let each_marker of all_markers) {
-//         each_marker.remove();
-//       }
-
-//   all_markers = [];
-
-//   let results = response.data.response.groups[0].items;
-//       for (let each_result of results) {
-//         let marker = new mapboxgl.Marker();
-//         marker.setLngLat([each_result.venue.location.lng, each_result.venue.location.lat]);
-//         marker.addTo(map); // <-- map is a global variable holding the mapboxgl Map object
-
-//         let popup = new mapboxgl.Popup({
-//           offset: 25
-//         });
-
-//         popup.setHTML(each_result.venue.name);
-
-//         marker.setPopup(popup);
-
-//         all_markers.push(marker);
-
-//       }
-// }
+      all_markers = [];
+})
