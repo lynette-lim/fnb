@@ -616,6 +616,7 @@ function setupMap() {
 }
 
 
+
 //To test Mapbox Settings DELETE LATER
 function getFastFood() {
   axios.get(API_URL + "/venues/search", {
@@ -649,7 +650,7 @@ $(function() {
       zoom: 14
     });
   });
-
+  
 
   // To trigger Cuisine change via Cuisine Searhbox HTML
   $('#buttonCuisine').click(function() {
@@ -668,6 +669,8 @@ $(function() {
         "query": cuisines[cuisine_code] // what we are searching for 
       }
     }).then(function(response) {
+      
+      
       $("#results").empty();
       
       for (let each_marker of all_markers) {
@@ -685,7 +688,25 @@ $(function() {
         let marker = new mapboxgl.Marker();
         marker.setLngLat([r.venue.location.lng, r.venue.location.lat]);
         marker.addTo(map); // <-- map is a global variable holding the mapboxgl Map object
-        let mediaObject = `<h5 class = "redirectmarker">${count}. ${r.venue.name}</h5>`;
+ 
+ let mediaObject = `
+<div class="container-fluid col-lg-8 col-sm-12">
+    <div class="row">
+        <div class="col-lg-8 col-sm-12"><h5 class="redirectmarker">${count}. ${r.venue.name}</h5></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-2 col-sm-2"><img src='${r.venue.categories[0].icon.prefix}100${r.venue.categories[0].icon.suffix}'/></div>
+        <div class="col-lg-10 col-sm-10">
+        
+        <img src='images/location-icon.png'/> ${r.venue.location.formattedAddress[0]}
+Singapore ${r.venue.location.formattedAddress[1]}
+<br>
+<img src='images/category-icon.png'/> ${r.venue.categories[0].shortName}
+        </div>
+    </div>
+</div>`;
+ 
+ 
         
         //createPopUp(r)
         $("#results").append(mediaObject);
