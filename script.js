@@ -657,7 +657,7 @@ $(function() {
     let center = map.getCenter();
     cuisine_code = $('#userInputCuisine').val();
     console.log(cuisines[cuisine_code]);
-
+    
     axios.get(API_URL + "/venues/explore", {
       params: {
         "client_id": CLIENT_ID,
@@ -732,6 +732,7 @@ Singapore ${r.venue.location.formattedAddress[1]}
 
 });
 
+
 $(document).on('click', '.redirectmarker', function() {
   //console.log(all_markers[$(this).text()[0] -1]);
   for(let m of all_markers) 
@@ -748,6 +749,7 @@ $(document).on('click', '.redirectmarker', function() {
   $('#buttonReset').click(function() {
     $('#userInputLocation').val('');
     $('#userInputCuisine').val('');
+    $('#results').remove();
     
   map.flyTo({
     container: 'map', // which html element it should be

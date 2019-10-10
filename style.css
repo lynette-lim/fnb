@@ -35,7 +35,28 @@
 }
 
 #map {
-    height: 600px;
+    height: 80vh;
+}
+
+#results {
+    height: 80vh;
+    overflow: auto;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+  border-left: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-track {
+  background: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ffffff;
+  border-radius: 0;
 }
 
 .marker {
@@ -46,8 +67,6 @@
   border-radius: 50%;
   cursor: pointer;
 }
-
-
 
 .mapboxgl-popup-content {
   text-align: center;
