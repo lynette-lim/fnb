@@ -690,9 +690,9 @@ $(function() {
         marker.addTo(map); // <-- map is a global variable holding the mapboxgl Map object
  
  let mediaObject = `
-<div class="container-fluid col-lg-8 col-sm-12">
+<div class="container-fluid col-lg-8 col-sm-10 pt-3 pb-3 mt-3 mb-3 mx-auto" id='mediaObject'>
     <div class="row">
-        <div class="col-lg-8 col-sm-12"><h5 class="redirectmarker">${count}. ${r.venue.name}</h5></div>
+        <div class="col-lg-8 col-sm-10"><h5 class="redirectmarker">${count}. ${r.venue.name}</h5></div>
     </div>
     <div class="row">
         <div class="col-lg-2 col-sm-2"><img src='${r.venue.categories[0].icon.prefix}100${r.venue.categories[0].icon.suffix}'/></div>
