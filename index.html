@@ -12,6 +12,7 @@
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.css' rel='stylesheet' />	
     <!-- jQuery UI -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
+    
 
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
@@ -22,14 +23,10 @@
     
 
   <div class="container-fluid col-lg-8 col-sm-12 pb-3" id="selectors">
-  <h1>Singapore F&B Directory</h1>
-  <label>Enter Nearest MRT or Region:</label><br>
-  <input id="userInputLocation" placeholder="Enter Location">
+  <img src="images/logo.png"/><br>
+  <input id="userInputLocation" placeholder="Enter location, nearest MRT">
   <br>
-    <!-- autocomplete HTML -->
-<label for="userInputCuisine">Enter Cuisine:</label>
-<br>
-<input id="userInputCuisine" placeholder="Search Cuisine">
+<input id="userInputCuisine" placeholder="Search cuisine, food, restaurant type">
 <button id="buttonCuisine">Search</button>
 <button id="buttonReset"><i class="fa fa-refresh" aria-hidden="true"></i></button>
 
@@ -38,18 +35,12 @@
 
 <div id='container-fluid'>
   <div class='row'>
-<div id='map' class='column col-lg-9 col-md-8 col-sm-10'></div>
+<div id='map' class='column col-xl-8 col-lg-8 col-md-12 col-sm-10'></div>
 
-<div class="column col-lg-3 col-md-4 col-sm-10" id='results'></div>
+
+<div class="column col-xl-4 col-lg-4 col-md-12 col-sm-10" id='results'></div>
 </div>
 </div>
-
-
-    <!--<div class="container-fluid col-lg-8 col-sm-12" id='map'>-->
-    <!--</div>-->
-    
-<!--<div id="results">-->
-<!--</div>-->
 
 
 
@@ -60,7 +51,7 @@
     <!-- jQuery UI -->  
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
- 
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script>

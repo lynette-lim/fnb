@@ -36,6 +36,7 @@
 
 #map {
     height: 80vh;
+    border-radius: 15px;
 }
 
 #results {
@@ -58,6 +59,7 @@
   background: #ffffff;
   border-radius: 0;
 }
+
 
 .marker {
   background-image: url('images/custom-marker.png');
@@ -92,4 +94,8 @@ html {
 
 html, body {
   overflow-x: hidden;
+}
+
+.foodIcons {
+  background-color: #D20055;
 }
