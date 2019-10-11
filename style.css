@@ -1,3 +1,4 @@
+
 #userInputCuisine, #userInputLocation {
   background-image: url('images/searchicon.png'); /* Add a search icon to input */
   background-position: 10px 12px; /* Position the search icon */
@@ -80,11 +81,17 @@
 body {
   background-image: linear-gradient(to top, #D20055, #BC004C, #FF0066);
   height:100%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
 }
 
 #mediaObject {
     background-color: white;
     border-radius: 15px;
+}
+
+.redirectmarker {
+    font-family: 'Quicksand', sans-serif;
 }
 
 html {
@@ -95,6 +102,8 @@ html {
 html, body {
   overflow-x: hidden;
 }
+
+
 
 .foodIcons {
   background-color: #D20055;
