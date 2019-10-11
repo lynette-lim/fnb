@@ -684,15 +684,15 @@ $(function() {
       results = response.data.response.groups[0].items;
       console.log(results);
       let count = 1;
+      
+
+
       for (let r of results) {
         let marker = new mapboxgl.Marker();
         marker.setLngLat([r.venue.location.lng, r.venue.location.lat]);
         marker.addTo(map); // <-- map is a global variable holding the mapboxgl Map object
  
  let mediaObject = `
- 
- 
- 
 <div class="container-fluid col-lg-11 col-sm-10 py-3 my-3 mx-auto" id='mediaObject'>
     <div class="row">
         <div class="col-lg-12 col-sm-8"><h5 class="redirectmarker">${count}. ${r.venue.name} <img class='foodIcons' src='${r.venue.categories[0].icon.prefix}32${r.venue.categories[0].icon.suffix}'/></h5></div>
@@ -709,8 +709,6 @@ $(function() {
     </div>
 </div>`;
  
- 
-        
         //createPopUp(r)
         $("#results").append(mediaObject);
         
@@ -719,10 +717,9 @@ $(function() {
         });
 
         //popup content: name, icon, address, postal code
-        popup.setHTML("<span><b>" + r.venue.name + "</b></span>" +
-          "<img src=" + r.venue.categories[0].icon.prefix + "32" + r.venue.categories[0].icon.suffix + ">" +
-          "<p>" + r.venue.location.formattedAddress[0] +
-          "<br>Singapore " + r.venue.location.formattedAddress[1] + "</p>");
+        popup.setHTML("<img style=\"background-color: #D20055;\" src=" + r.venue.categories[0].icon.prefix + "32" + r.venue.categories[0].icon.suffix + ">" +
+        "<div style=\"text: align-center;\"><b>" + r.venue.name + "</b></div>"
+        );
 
 
         marker.setPopup(popup);
@@ -752,7 +749,7 @@ $(document).on('click', '.redirectmarker', function() {
   $('#buttonReset').click(function() {
     $('#userInputLocation').val('');
     $('#userInputCuisine').val('');
-    $('#results').remove();
+    $('#results').empty();
     
   map.flyTo({
     container: 'map', // which html element it should be

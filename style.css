@@ -36,13 +36,23 @@
 }
 
 #map {
-    height: 80vh;
-    border-radius: 15px;
+    height: 50vh;
+}
+
+
+@media only screen and (min-width: 800px) {
+  #map {
+    height: 100vh;
+    position: absolute;
+}
+
 }
 
 #results {
-    height: 80vh;
-    overflow: auto;
+    height: 100vh;
+    overflow-x: auto;
+    overflow-y: auto;
+    background-color: rgba(210,0,85,0.9);
 }
 
 ::-webkit-scrollbar {
@@ -71,10 +81,14 @@
   cursor: pointer;
 }
 
+
+
 .mapboxgl-popup-content {
   text-align: center;
   font-family: 'Open Sans', sans-serif;
-  background-color: pink;
+  font-weight: bold;
+  background-color: white;
+  
 }
 
 
