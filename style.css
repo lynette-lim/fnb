@@ -1,4 +1,4 @@
-
+/*Search box layout*/
 #userInputCuisine, #userInputLocation {
   background-image: url('images/searchicon.png'); /* Add a search icon to input */
   background-position: 10px 12px; /* Position the search icon */
@@ -10,6 +10,7 @@
   margin-bottom: 12px; /* Add some space below the input */
 }
 
+/*Autocomplete layout*/
 .ui-autocomplete {
     max-height: 200px;
     overflow-y: auto;
@@ -35,24 +36,33 @@
     font-weight: normal;
 }
 
+
+/*Mapbox*/
+
 #map {
     height: 50vh;
 }
 
-
-@media only screen and (min-width: 800px) {
-  #map {
-    height: 100vh;
-    position: absolute;
+.redirectmarker {
+    font-family: 'Quicksand', sans-serif;
 }
 
+html {
+    min-height:100%;
 }
+
+
+html, body {
+  overflow-x: hidden;
+}
+
+
 
 #results {
     height: 100vh;
     overflow-x: auto;
     overflow-y: auto;
-    background-color: rgba(210,0,85,0.9);
+    background-color: rgba(210,0,85,0.3);
 }
 
 ::-webkit-scrollbar {
@@ -75,8 +85,8 @@
 .marker {
   background-image: url('images/custom-marker.png');
   background-size: cover;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   cursor: pointer;
 }
@@ -104,20 +114,13 @@ body {
     border-radius: 15px;
 }
 
-.redirectmarker {
-    font-family: 'Quicksand', sans-serif;
+
+@media only screen and (min-width: 800px) {
+  #map {
+    height: 100vh;
+    position: absolute;
 }
-
-html {
-    min-height:100%;
 }
-
-
-html, body {
-  overflow-x: hidden;
-}
-
-
 
 .foodIcons {
   background-color: #D20055;
