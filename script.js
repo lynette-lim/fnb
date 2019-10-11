@@ -173,16 +173,6 @@ let locations = {
   'Yishun': [103.8350045, 1.429443081]
 }
 
-// //Establishment Type
-// let types = {
-//   fastfood: 'fast food',
-//   foodcourt: 'foodcourt',
-//   hawker: 'hawkercentre',
-//   restaurant: 'restaurant',
-//   cafe: 'cafe',
-//   pubBar: 'pub bar'
-// }
-
 //Cuisines
 let cuisines = {
   'Bakery': 'bakery',
@@ -256,8 +246,6 @@ let cuisines = {
   'Vegetarian': 'Vegetarian',
   'Halal': 'Halal'
 }
-
-
 
 // define object terms
 let location_code = $('#userInputLocation').val();
@@ -607,27 +595,6 @@ function setupMap() {
   });
 }
 
-
-
-//To test Mapbox Settings DELETE LATER
-function getFastFood() {
-  axios.get(API_URL + "/venues/search", {
-    params: {
-      "client_id": CLIENT_ID,
-      "client_secret": CLIENT_SECRET,
-      "v": '20192609', // v for is the version
-      "limit": 50, // limit is how many results returned
-      "center": regions[region_code], // latitude/longtitude
-      "query": types[type_code], // what we are searching for
-      "categoryId": '4d4b7105d754a06374d81259, 4bf58dd8d48988d16e941735' //1.food | 2.fast food, 3.foodcourt, 4.cafe 5.cafeteria
-
-    }
-  }).then(function(response) {
-    console.log(response.data.response.groups[0].items);
-  })
-}
-// ------------
-
 $(function() {
   //show map
   setupMap();
@@ -671,13 +638,9 @@ $(function() {
 
       all_markers = [];
 
-
-
       results = response.data.response.groups[0].items;
       console.log(results);
       let count = 1;
-      
-
 
       for (let r of results) {
         
@@ -703,6 +666,7 @@ $(function() {
         </div>
     </div>
 </div>`;
+
  
         //createPopUp(r)
         $("#results").append(mediaObject);
