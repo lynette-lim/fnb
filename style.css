@@ -66,8 +66,8 @@ html, body {
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 2px;
+  height: 2px;
   border-left: 0;
   background: #FF0066;
 }
@@ -115,13 +115,45 @@ body {
 }
 
 
-@media only screen and (min-width: 800px) {
-  #map {
-    height: 100vh;
-    position: absolute;
-}
-}
-
 .foodIcons {
   background-color: #D20055;
+}
+
+/*.carousel-inner > .carousel-item > img {*/
+/*  width: 100vw;*/
+/*}*/
+
+
+/*FOR DESKTOP VIEW AND IPAD PRO IN LANDSCAPE MODE*/
+@media (min-width: 1366px){
+    .userInput {
+  position: relative;
+  z-index:1;
+  height: 100vh;
+    }
+    
+    #carouselHeader, .carouselInner {
+      position: absolute;
+      z-index:-1;
+      height: calc(100vh - 50px);
+    }
+
+    #map {
+    height: 100vh;
+    position: absolute;
+    }
+    
+}
+
+/*FOR IPAD PRO AND SMALLER*/
+@media (max-width: 1366px){
+    .userInput {
+  position: relative;
+  z-index:1;
+    }
+    
+    #carouselHeader, .carouselInner {
+      position: absolute;
+      z-index:-1;
+    }
 }
