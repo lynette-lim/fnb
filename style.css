@@ -1,68 +1,134 @@
-/*Search box layout*/
+#logo {
+    display: block;
+}
+
+/*Searchbox layout*/
 #userInputCuisine, #userInputLocation {
-  background-image: url('images/searchicon.png'); /* Add a search icon to input */
-  background-position: 10px 12px; /* Position the search icon */
   background-repeat: no-repeat; /* Do not repeat the icon image */
   width: 100%; /* Full-width */
-  font-size: 16px; /* Increase font-size */
-  padding: 12px 20px 12px 40px; /* Add some padding */
+  padding: 12px 20px 12px 50px; /* Add some padding */
   border: 1px solid #ddd; /* Add a grey border */
+  border-radius: 30px;
   margin-bottom: 12px; /* Add some space below the input */
+}
+
+#userInputCuisine {
+  background-image: url('images/foodicon.png');
+  background-position: 15px 12px;
+}
+
+#userInputLocation {
+  background-image: url('images/locationicon.png');
+  background-position: 15px 10px;
+}
+
+::placeholder {
+  font-family: 'Open Sans', sans-serif;
+}
+
+input {
+  font-family: 'Quicksand', sans-serif;
+}
+
+/*Button layout*/
+#buttonCuisine, #buttonReset {
+  border-color: transparent;
+  padding: 12px 5px 12px ; /* Add some padding */
+  border-radius: 30px;
+  margin-bottom: 12px; /* Add some space below the input */
+}
+
+#buttonCuisine {
+  width: 80px;
+  margin-right:1%;
+}
+
+#buttonReset {
+  width: 50px;
+  margin-left: 1%;
 }
 
 /*Autocomplete layout*/
 .ui-autocomplete {
     max-height: 200px;
     overflow-y: auto;
-    /* prevent horizontal scrollbar */
     overflow-x: hidden;
 }
-/* IE 6 doesn't support max-height
-			 * we use height instead, but this forces the menu to always be this tall
-			 */
- * html .ui-autocomplete {
-    height: 100px;
+
+.ui-autocomplete :hover {
+  background-color: #D20055;
 }
-.ui-autocomplete .highlight {
-    text-decoration: underline;
-}
+
+
 .ui-autocomplete-category {
+    color: #D20055;
     font-weight: bold;
     padding: .2em .4em;
     margin: .8em 0 .2em;
     line-height: 1.5;
 }
+
 .ui-autocomplete .ui-autocomplete-category:focus {
     font-weight: normal;
 }
 
 
+
+
 /*Mapbox*/
-
-#map {
-    height: 50vh;
-}
-
 .redirectmarker {
     font-family: 'Quicksand', sans-serif;
 }
 
-html {
-    min-height:100%;
+.marker {
+  background-image: url('images/custom-marker.png');
+  background-size: cover;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
-
-html, body {
-  overflow-x: hidden;
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  background-color: white;
+  
 }
-
-
 
 #results {
     height: 100vh;
     overflow-x: auto;
     overflow-y: auto;
     background-color: rgba(210,0,85,0.3);
+}
+
+#mediaObject {
+    background-color: white;
+    border-radius: 15px;
+}
+
+.foodIcons {
+  background-color: #D20055;
+}
+
+
+/*Main layout*/
+
+html {
+    min-height:100%;
+}
+
+body {
+  background-image: linear-gradient(to top, #D20055, #BC004C, #FF0066);
+  height:100%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+}
+
+html, body {
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -81,55 +147,43 @@ html, body {
   border-radius: 0;
 }
 
+/*To prevent Search button color from clashing with background color*/
 
-.marker {
-  background-image: url('images/custom-marker.png');
-  background-size: cover;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-
-
-.mapboxgl-popup-content {
-  text-align: center;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: bold;
-  background-color: white;
+@media (min-width: 567px){
   
-}
-
-
-body {
-  background-image: linear-gradient(to top, #D20055, #BC004C, #FF0066);
-  height:100%;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 15px;
-}
-
-#mediaObject {
-    background-color: white;
-    border-radius: 15px;
-}
-
-
-.foodIcons {
+  /*POSITIVE BUTTON PINK BG WHITE LOGO*/
+  #buttonCuisine {
   background-color: #D20055;
+  color: white;
+  }
+  /*NEGATIVE BUTTON GREY BG PINK LOGO*/
+  #buttonReset {
+  color: #D20055;
+  }
 }
 
-/*.carousel-inner > .carousel-item > img {*/
-/*  width: 100vw;*/
-/*}*/
-
+@media (max-width: 566px) {
+  /*POSITIVE BUTTON GREY BG PINK LOGO*/
+  #buttonCuisine {
+  color: #D20055;
+  }
+  /*NEGATIVE BUTTON PINK BG WHITE LOGO 1.5PX BORDER*/
+  #buttonReset {
+  background-color: #D20055;
+  color: white;
+  border: 1.5px solid #ddd;
+  }
+}
 
 /*FOR DESKTOP VIEW AND IPAD PRO IN LANDSCAPE MODE*/
 @media (min-width: 1366px){
+  #logo {
+    margin-left: 30%;
+}
     .userInput {
-  position: relative;
-  z-index:1;
-  height: 100vh;
+      position: relative;
+      z-index:1;
+      height: 100vh;
     }
     
     #carouselHeader, .carouselInner {
@@ -139,21 +193,34 @@ body {
     }
 
     #map {
-    height: 100vh;
-    position: absolute;
+      height: 100vh !important;
+      position: absolute;
+      padding: 0px;
     }
     
 }
 
 /*FOR IPAD PRO AND SMALLER*/
 @media (max-width: 1366px){
+    #logo {
+    margin-left: 15%;
+    padding-bottom: 5%;
+}
     .userInput {
-  position: relative;
-  z-index:1;
+      position: relative;
+      z-index:1;
     }
     
     #carouselHeader, .carouselInner {
       position: absolute;
       z-index:-1;
+    }
+    
+    #map {
+      height: 50vh;
+    }
+    
+    body {
+      font-size: 12px;
     }
 }

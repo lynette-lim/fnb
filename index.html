@@ -13,7 +13,7 @@
     <!-- jQuery UI -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
     <!-- Font Awesome Icon -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Quicksand:700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300&display=swap" rel="stylesheet">
@@ -43,13 +43,15 @@
   
     
 <section class="userInput">
-  <div class="container-fluid col-lg-8 col-sm-12 pb-3">
-  <img src="images/logo.png"/><br>
-  <input id="userInputLocation" placeholder="Enter location, nearest MRT">
+  <div class="container-fluid col-lg-4 col-md-7 col-sm-8 pb-3">
+  <img id="logo" src="images/logo.png"/><br>
+  <input id="userInputLocation" placeholder="Enter location or nearest MRT">
   <br>
 <input id="userInputCuisine" placeholder="Search cuisine, food, restaurant type">
-<button id="buttonCuisine">Search</button>
-<button id="buttonReset"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+<div class="container-fluid d-flex justify-content-center">
+<button id="buttonCuisine"><i class="fa fa-search fa-lg"></i></button>
+<button id="buttonReset"><i class="fa fa-undo fa-lg"></i></button>
+</div>
 </div>
 </section>
 
