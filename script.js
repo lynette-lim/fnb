@@ -272,6 +272,7 @@ function testGetFourSquare() {
 /* global variables */
 let map;
 let all_markers = [];
+let geolocate = new mapboxgl.GeolocateControl();
 
 //set maxBounds for Map
 let bounds = [
@@ -610,6 +611,29 @@ $(function() {
     });
   });
   
+// get user location
+$('#buttonUserLocation').click(function() {
+  $("#buttonUserLocation").prop("disabled", true);
+  alert('Click Location icon on map and search cuisine')
+
+
+map.addControl(geolocate);
+
+geolocate.on('geolocate', function(e) {
+      let lon = e.coords.longitude;
+      let lat = e.coords.latitude
+      let position = $('#userInputLocation').val([lon, lat]);
+      $("#userInputLocation").attr( "disabled", true );
+      
+      
+}).then(function(response){
+  
+   map.flyTo({
+      center: position,
+      zoom: 14
+    });
+});
+});
 
   // To trigger Cuisine change via Cuisine Searhbox HTML
   $('#buttonCuisine').click(function() {
@@ -629,7 +653,6 @@ $(function() {
       }
     }).then(function(response) {
       
-      
       $("#results").empty();
       
       for (let each_marker of all_markers) {
@@ -646,7 +669,7 @@ $(function() {
         
         var el = document.createElement('div');  el.className = 'marker';
         let marker = new mapboxgl.Marker(el);
-        
+
         marker.setLngLat([r.venue.location.lng, r.venue.location.lat]);
         marker.addTo(map); // <-- map is a global variable holding the mapboxgl Map object
  
@@ -695,7 +718,6 @@ $(function() {
 
 });
 
-
 $(document).on('click', '.redirectmarker', function() {
   // console.log(all_markers[$(this).text()[0] -1]);
   for(let m of all_markers) 
@@ -711,9 +733,13 @@ $(document).on('click', '.redirectmarker', function() {
 });
 
   $('#buttonReset').click(function() {
+    map.removeControl(geolocate);
+    $("#userInputLocation").attr( "disabled", false );
     $('#userInputLocation').val('');
     $('#userInputCuisine').val('');
     $('#results').empty();
+    $("#buttonUserLocation").prop("disabled", false);
+    
     
   map.flyTo({
     container: 'map', // which html element it should be

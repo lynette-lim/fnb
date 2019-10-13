@@ -48,6 +48,7 @@ input {
   margin-left: 1%;
 }
 
+
 /*Autocomplete layout*/
 .ui-autocomplete {
     max-height: 200px;
@@ -135,7 +136,7 @@ html, body {
   width: 2px;
   height: 2px;
   border-left: 0;
-  background: #FF0066;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-track {
@@ -143,31 +144,41 @@ html, body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ffffff;
+  background: #D20055;
   border-radius: 0;
 }
 
-/*To prevent Search button color from clashing with background color*/
-
+/*To prevent the color of the Search Button from clashing with background color*/
 @media (min-width: 567px){
-  
-  /*POSITIVE BUTTON PINK BG WHITE LOGO*/
+
   #buttonCuisine {
   background-color: #D20055;
   color: white;
   }
-  /*NEGATIVE BUTTON GREY BG PINK LOGO*/
+  
+  #buttonCuisine:hover, #buttonCuisine:focus {
+    color: #D20055;
+    background-color: #CCCCCC;
+    border: 2px solid #D20055;
+  }
+  
   #buttonReset {
   color: #D20055;
+  }
+  
+  #buttonReset:hover, #buttonReset:focus {
+    color: #CCCCCC;
+    background-color: #D20055;
+    border: 2px solid #CCCCCC;
   }
 }
 
 @media (max-width: 566px) {
-  /*POSITIVE BUTTON GREY BG PINK LOGO*/
+  
   #buttonCuisine {
   color: #D20055;
   }
-  /*NEGATIVE BUTTON PINK BG WHITE LOGO 1.5PX BORDER*/
+  
   #buttonReset {
   background-color: #D20055;
   color: white;

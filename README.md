@@ -1,18 +1,20 @@
-         ___        ______     ____ _                 _  ___  
-        / \ \      / / ___|   / ___| | ___  _   _  __| |/ _ \ 
-       / _ \ \ /\ / /\___ \  | |   | |/ _ \| | | |/ _` | (_) |
-      / ___ \ V  V /  ___) | | |___| | (_) | |_| | (_| |\__, |
-     /_/   \_\_/\_/  |____/   \____|_|\___/ \__,_|\__,_|  /_/ 
- ----------------------------------------------------------------- 
-
-
-Hi there! Welcome to AWS Cloud9!
-
-To get started, create some files, play with the terminal,
-or visit https://docs.aws.amazon.com/console/cloud9/ for our documentation.
-
-Happy coding!
 
 
 MRT Station Data source:
 https://data.world/hxchua/train-stations-in-singapore/workspace/file?filename=mrtsg.csv
+
+Back to top button:
+https://www.youtube.com/watch?v=gphMli74Chk
+
+Images:
+https://www.pexels.com/
+
+Image resizer:
+https://www.iloveimg.com/resize-image
+
+Icons:
+https://thenounproject.com/
+https://fontawesome.com/icons?d=gallery
+
+Get Geolocation Coordinates via Mapbox:
+https://stackoverflow.com/questions/50877315/getting-mapbox-geolocation-coordinates-into-a-variable
