@@ -281,6 +281,11 @@ let bounds = [
 ];
 
 
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+
+
 //AUTOCOMPLETE FOR LOCATION
 $(function() {
   $.widget("custom.catcomplete", $.ui.autocomplete, {
@@ -613,10 +618,10 @@ $(function() {
   
 // get user location
 $('#buttonUserLocation').click(function() {
+  
   $("#buttonUserLocation").prop("disabled", true);
-  alert('Click Location icon on map and search cuisine')
-
-
+  // alert('Click Location icon on map and search cuisine')
+  
 map.addControl(geolocate);
 
 geolocate.on('geolocate', function(e) {
@@ -624,7 +629,6 @@ geolocate.on('geolocate', function(e) {
       let lat = e.coords.latitude
       let position = $('#userInputLocation').val([lon, lat]);
       $("#userInputLocation").attr( "disabled", true );
-      
       
 }).then(function(response){
   
@@ -654,6 +658,8 @@ geolocate.on('geolocate', function(e) {
     }).then(function(response) {
       
       $("#results").empty();
+      $('.popover').popover('hide');
+
       
       for (let each_marker of all_markers) {
         each_marker.remove();

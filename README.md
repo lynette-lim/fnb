@@ -16,5 +16,8 @@ Icons:
 https://thenounproject.com/
 https://fontawesome.com/icons?d=gallery
 
+Recolour Icons:
+https://pinetools.com/colorize-image
+
 Get Geolocation Coordinates via Mapbox:
 https://stackoverflow.com/questions/50877315/getting-mapbox-geolocation-coordinates-into-a-variable
