@@ -67,6 +67,12 @@ input {
   z-index: 1;
 }
 
+.popover {
+  font-size: 11px;
+  color: white;
+  opacity: 0.9;
+}
+
 /*Autocomplete layout*/
 .ui-autocomplete {
     max-height: 200px;

@@ -282,9 +282,10 @@ let bounds = [
 
 
 $(function () {
-  $('[data-toggle="popover"]').popover()
-})
-
+  $('[data-toggle="popover"]').popover({
+    html: true
+  });
+});
 
 //AUTOCOMPLETE FOR LOCATION
 $(function() {
@@ -620,7 +621,6 @@ $(function() {
 $('#buttonUserLocation').click(function() {
   
   $("#buttonUserLocation").prop("disabled", true);
-  // alert('Click Location icon on map and search cuisine')
   
 map.addControl(geolocate);
 
@@ -628,6 +628,7 @@ geolocate.on('geolocate', function(e) {
       let lon = e.coords.longitude;
       let lat = e.coords.latitude
       let position = $('#userInputLocation').val([lon, lat]);
+      $('.popover').popover('hide');
       $("#userInputLocation").attr( "disabled", true );
       
 }).then(function(response){
@@ -638,6 +639,8 @@ geolocate.on('geolocate', function(e) {
     });
 });
 });
+
+
 
   // To trigger Cuisine change via Cuisine Searhbox HTML
   $('#buttonCuisine').click(function() {
@@ -658,7 +661,7 @@ geolocate.on('geolocate', function(e) {
     }).then(function(response) {
       
       $("#results").empty();
-      $('.popover').popover('hide');
+      
 
       
       for (let each_marker of all_markers) {
