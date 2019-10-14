@@ -751,7 +751,20 @@ $(document).on('click', '.redirectmarker', function() {
 
 //Reset and empty input box, map, re-enable geolocation button and activate location input box
 $('#buttonReset').click(function() {
+  
+  
+  ` Objective: To remove geolocate button on mapbox, upon toggling the reset button.
+  
+    Problem: If function is added: Reset button unable to work > if user did not activate geolocate button
+                                   Reset button can work > as long as user activates geolocate button at
+                                   least ONCE before attemping to use location search input.
+    
+    Possible solution:
+    IF map.addControl(geolocate) TRUE, removeControl(geolocate);`
+  
   map.removeControl(geolocate);
+  
+  
   $("#userInputLocation").attr("disabled", false);
   $('#userInputLocation').val('');
   $('#userInputCuisine').val('');
