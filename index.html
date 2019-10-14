@@ -1,94 +1,95 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-sacle=1, maximum-scale=1, user-scalable=no">
-    <!-- jQuery UI -->
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!--Mapbox-->
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.css' rel='stylesheet' />	
-    <!-- Font Awesome Icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Quicksand:700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300&display=swap" rel="stylesheet">
-  
-    <link rel="stylesheet" href="style.css">
 
-    <title>Singapore F&B Directory</title>
-  </head>
-  <body>
-    
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-sacle=1, maximum-scale=1, user-scalable=no">
+  <!-- jQuery UI -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!--Mapbox-->
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.css' rel='stylesheet' />
+  <!-- Font Awesome Icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300&display=swap" rel="stylesheet">
 
-   <div id="carouselHeader" class="carousel slide carousel-fade" data-ride="carousel" data-interval="5000">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
+  <link rel="stylesheet" href="style.css">
+
+  <title>Singapore F&B Directory</title>
+</head>
+
+<body>
+
+
+  <div id="carouselHeader" class="carousel slide carousel-fade" data-ride="carousel" data-interval="5000">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
         <img src="images/food1.jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="images/food2.jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="images/food3.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="images/food2.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="images/food3.jpg" class="d-block w-100" alt="...">
+      </div>
     </div>
   </div>
-</div>
-  
-    <div data-aos="fade-right"
-     data-aos-offset="300"
-     data-aos-easing="ease-in-sine">
-<section class="userInput">
-  <div class="container-fluid col-lg-4 col-md-7 col-sm-8 pb-3">
-  <img id="logo" src="images/logo.png"/><br>
-  
-  <button type="button" id="buttonUserLocation" data-container="body" data-toggle="popover" data-placement="right" data-content="Click<img src='images/geocode.png'/>on the map to get your current location."></button>
-  
-  <input id="userInputLocation" placeholder="Enter location or nearest MRT">
-  <br>
-<input id="userInputCuisine" placeholder="Search cuisine, food, restaurant type">
-<div class="container-fluid d-flex justify-content-center">
-<button id="buttonCuisine"><i class="fa fa-search fa-lg"></i></button>
-<button id="buttonReset"><i class="fa fa-undo fa-lg"></i></button>
 
-<!--    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">-->
-<!--  Popover on right-->
-<!--</button>-->
+  <div data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
+    <section class="userInput">
+      <div class="container-fluid col-lg-4 col-md-7 col-sm-8 pb-3">
+        <img id="logo" src="images/logo.png" /><br>
 
-</div>
-</div>
-</div>
-</section>
+        <button type="button" id="buttonUserLocation" data-container="body" data-toggle="popover" data-placement="right" data-content="Click<img src='images/geocode.png'/>on the map to get your current location."></button>
+
+        <input id="userInputLocation" placeholder="Enter location or nearest MRT">
+        <br>
+        <input id="userInputCuisine" placeholder="Search cuisine, food, restaurant type">
+        <div class="container-fluid d-flex justify-content-center">
+          <button id="buttonSearch"><i class="fa fa-search fa-lg"></i></button>
+          <button id="buttonReset"><i class="fa fa-undo fa-lg"></i></button>
+
+          <!--    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">-->
+          <!--  Popover on right-->
+          <!--</button>-->
+
+        </div>
+      </div>
+  </div>
+  </section>
 
 
 
-<div id='container-fluid'>
-  <div class='row'>
-<div id='map' class='column col-xl-12 col-lg-12 col-md-12 col-sm-12'></div>
+  <div id='container-fluid'>
+    <div class='row'>
+      <div id='map' class='column col-xl-12 col-lg-12 col-md-12 col-sm-12'></div>
 
-<div class="column col-xl-4 col-lg-12 col-md-12 col-sm-10" id='results'></div>
-</div>
-</div>
-
-
-<button id="back-to-top-btn"><i class="fa fa-angle-double-up"></i></button>
+      <div class="column col-xl-4 col-lg-12 col-md-12 col-sm-10" id='results'></div>
+    </div>
+  </div>
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <!-- jQuery UI -->  
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
-    <!--Bootstrap JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script>
-    <script src="script.js"></script>
-  </body>
+  <button id="back-to-top-btn"><i class="fa fa-angle-double-up"></i></button>
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <!-- jQuery UI -->
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <!--Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script>
+  <script src="script.js"></script>
+</body>
+
 </html>

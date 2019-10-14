@@ -3,12 +3,17 @@
 /* global mapboxgl */
 /* global venue */
 
-// define frequently used constants
+// Define frequently used constants
 const API_URL = 'https://api.foursquare.com/v2';
 const CLIENT_ID = 'MBW5E3D455SVF2HV2BPEB2TJG21XCZTA3WDAZ4U5I4PMPLCZ';
 const CLIENT_SECRET = "ETY2MWRODHNEDLP3MGGWKFX0AM1TLAA0XHZ5HW0S1YNTL2AA";
 
-// Regions in LONG/LAT
+/* global variables */
+let map;
+let all_markers = [];
+let geolocate = new mapboxgl.GeolocateControl();
+
+// Regions Object in LONG/LAT
 let locations = {
   'Admiralty': [103.8009982, 1.440585001],
   'Aljunied': [103.882893, 1.316432612],
@@ -173,7 +178,7 @@ let locations = {
   'Yishun': [103.8350045, 1.429443081]
 }
 
-//Cuisines
+//Cuisines Object
 let cuisines = {
   'Bakery': 'bakery',
   'Café': 'cafe',
@@ -182,6 +187,7 @@ let cuisines = {
   'Pub & Bar': 'pub bar',
   'Restaurant': 'restaurant',
   'Food Court': 'foodcourt',
+  'Halal': 'Halal',
   'Japanese': 'Japanese',
   'Chinese': 'Chinese',
   'Asian Fusion': 'Asian Fusion',
@@ -232,7 +238,6 @@ let cuisines = {
   'Barbeque': 'Barbeque',
   'Noodles': 'Noodles',
   'Bubble Tea': 'Bubble Tea',
-  'Tapas/Small Plates': 'Tapas',
   'HotPot': 'HotPot',
   'Izakaya': 'Izakaya',
   'Chicken': 'Chicken',
@@ -244,10 +249,9 @@ let cuisines = {
   'Creperies': 'Creperies',
   'Vegan': 'Vegan',
   'Vegetarian': 'Vegetarian',
-  'Halal': 'Halal'
 }
 
-// define object terms
+// Define object terms
 let location_code = $('#userInputLocation').val();
 let cuisine_code = $('#userInputCuisine').val();
 let results;
@@ -269,10 +273,6 @@ function testGetFourSquare() {
   })
 }
 
-/* global variables */
-let map;
-let all_markers = [];
-let geolocate = new mapboxgl.GeolocateControl();
 
 //set maxBounds for Map
 let bounds = [
@@ -280,14 +280,14 @@ let bounds = [
   [104.044757, 1.489435] // Northeast coordinates
 ];
 
-
-$(function () {
+//Setup popover (for geolocate function)
+$(function() {
   $('[data-toggle="popover"]').popover({
     html: true
   });
 });
 
-//AUTOCOMPLETE FOR LOCATION
+//Autocomplete for Location
 $(function() {
   $.widget("custom.catcomplete", $.ui.autocomplete, {
     _create: function() {
@@ -311,167 +311,167 @@ $(function() {
     }
   });
   var data = [
-    { label: "Admiralty"  },
-    { label: "Aljunied"  },
-    { label: "Ang Mo Kio"  },
-    { label: "Bakau"  },
-    { label: "Bangkit"  },
-    { label: "Bartley"  },
-    { label: "Bayfront"  },
-    { label: "Beauty World"  },
-    { label: "Bedok"  },
-    { label: "Bedok North"  },
-    { label: "Bedok Reservoir"  },
-    { label: "Bencoolen"  },
-    { label: "Bendemeer"  },
-    { label: "Bishan"  },
-    { label: "Boon Keng"  },
-    { label: "Boon Lay"  },
-    { label: "Botanic Gardens"  },
-    { label: "Braddell"  },
-    { label: "Bras Basah"  },
-    { label: "Buangkok"  },
-    { label: "Bugis"  },
-    { label: "Bukit Batok"  },
-    { label: "Bukit Brown"  },
-    { label: "Bukit Gombak"  },
-    { label: "Bukit Panjang"  },
-    { label: "Buona Vista"  },
-    { label: "Caldecott"  },
-    { label: "Cashew"  },
-    { label: "Changi Airport"  },
-    { label: "Cheng Lim"  },
-    { label: "Chinatown"  },
-    { label: "Chinese Garden"  },
-    { label: "Choa Chu Kang"  },
-    { label: "City Hall"  },
-    { label: "Clarke Quay"  },
-    { label: "Clementi"  },
-    { label: "Commonwealth"  },
-    { label: "Compassvale"  },
-    { label: "Coral Edge"  },
-    { label: "Cove"  },
-    { label: "Dakota"  },
-    { label: "Damai"  },
-    { label: "Dhoby Ghaut"  },
-    { label: "Dover"  },
-    { label: "Downtown"  },
-    { label: "Esplanade"  },
-    { label: "Eunos"  },
-    { label: "Expo"  },
-    { label: "Fajar"  },
-    { label: "Farmway"  },
-    { label: "Farrer Park"  },
-    { label: "Farrer Road"  },
-    { label: "Fernvale"  },
-    { label: "Fort Canning"  },
-    { label: "Geylang Bahru"  },
-    { label: "Gul Circle"  },
-    { label: "Harbourfront"  },
-    { label: "Haw Par Villa"  },
-    { label: "Hillview"  },
-    { label: "Holland Village"  },
-    { label: "Hougang"  },
-    { label: "Jalan Besar"  },
-    { label: "Jelapang"  },
-    { label: "Joo Koon"  },
-    { label: "Jurong East"  },
-    { label: "Kadaloor"  },
-    { label: "Kaki Bukit"  },
-    { label: "Kallang"  },
-    { label: "Kangkar"  },
-    { label: "Keat Hong"  },
-    { label: "Kembangan"  },
-    { label: "Kent Ridge"  },
-    { label: "Khatib"  },
-    { label: "King Albert Park"  },
-    { label: "Kovan"  },
-    { label: "Kranji"  },
-    { label: "Kupang"  },
-    { label: "Labrador Park"  },
-    { label: "Lakeside"  },
-    { label: "Lavender"  },
-    { label: "Layar"  },
-    { label: "Little India"  },
-    { label: "Lorong Chuan"  },
-    { label: "Macpherson"  },
-    { label: "Marina Bay"  },
-    { label: "Marina South Pier"  },
-    { label: "Marine Parade"},
-    { label: "Marsiling"  },
-    { label: "Marymount"  },
-    { label: "Mattar"  },
-    { label: "Meridian"  },
-    { label: "Mountbatten"  },
-    { label: "Newton"  },
-    { label: "Nibong"  },
-    { label: "Nicoll Highway"  },
-    { label: "Novena"  },
-    { label: "Oasis"  },
-    { label: "One-north"  },
-    { label: "Orchard"  },
-    { label: "Outram Park"  },
-    { label: "Pasir Panjang"  },
-    { label: "Pasir Ris"  },
-    { label: "Paya Lebar"  },
-    { label: "Pending "  },
-    { label: "Petir"  },
-    { label: "Phoenix "  },
-    { label: "Pioneer"  },
-    { label: "Potong Pasir"  },
-    { label: "Promenade"  },
-    { label: "Punggol "  },
-    { label: "Punggol Point "  },
-    { label: "Queenstown"  },
-    { label: "Raffles Place"  },
-    { label: "Ranggung"  },
-    { label: "Redhill"  },
-    { label: "Renjong"  },
-    { label: "Riviera"  },
-    { label: "Rochor"  },
-    { label: "Rumbia"  },
-    { label: "Sam Kee"  },
-    { label: "Samudera"  },
-    { label: "Segar"  },
-    { label: "Sembawang"  },
-    { label: "Sengkang"  },
-    { label: "Senja"  },
-    { label: "Serangoon"  },
-    { label: "Simei"  },
-    { label: "Sixth Avenue"  },
-    { label: "Somerset"  },
-    { label: "Soo Teck"  },
-    { label: "South View"  },
-    { label: "Stadium"  },
-    { label: "Stevens"  },
-    { label: "Sumang"  },
-    { label: "Tai Seng"  },
-    { label: "Tampines East"  },
-    { label: "Tampines"  },
-    { label: "Tampines West"  },
-    { label: "Tan Kah Kee"  },
-    { label: "Tanah Merah"  },
-    { label: "Tanjong Pagar"  },
-    { label: "Teck Lee"  },
-    { label: "Teck Whye"  },
-    { label: "Telok Ayer"  },
-    { label: "Telok Blangah"  },
-    { label: "Ten Mile Junction"  },
-    { label: "Thanggam"  },
-    { label: "Tiong Bahru"  },
-    { label: "Toa Payoh"  },
-    { label: "Tongkang"  },
-    { label: "Tuas Crescent"  },
-    { label: "Tuas Link"  },
-    { label: "Tuas West Road"  },
-    { label: "Ubi"  },
-    { label: "Upper Changi"  },
-    { label: "Woodlands"  },
-    { label: "Woodlands South"  },
-    { label: "Woodleigh"  },
-    { label: "Yew Tee"  },
-    { label: "Yio Chu Kang"  },
-    { label: "Yishun"  }
+    { label: "Admiralty" },
+    { label: "Aljunied" },
+    { label: "Ang Mo Kio" },
+    { label: "Bakau" },
+    { label: "Bangkit" },
+    { label: "Bartley" },
+    { label: "Bayfront" },
+    { label: "Beauty World" },
+    { label: "Bedok" },
+    { label: "Bedok North" },
+    { label: "Bedok Reservoir" },
+    { label: "Bencoolen" },
+    { label: "Bendemeer" },
+    { label: "Bishan" },
+    { label: "Boon Keng" },
+    { label: "Boon Lay" },
+    { label: "Botanic Gardens" },
+    { label: "Braddell" },
+    { label: "Bras Basah" },
+    { label: "Buangkok" },
+    { label: "Bugis" },
+    { label: "Bukit Batok" },
+    { label: "Bukit Brown" },
+    { label: "Bukit Gombak" },
+    { label: "Bukit Panjang" },
+    { label: "Buona Vista" },
+    { label: "Caldecott" },
+    { label: "Cashew" },
+    { label: "Changi Airport" },
+    { label: "Cheng Lim" },
+    { label: "Chinatown" },
+    { label: "Chinese Garden" },
+    { label: "Choa Chu Kang" },
+    { label: "City Hall" },
+    { label: "Clarke Quay" },
+    { label: "Clementi" },
+    { label: "Commonwealth" },
+    { label: "Compassvale" },
+    { label: "Coral Edge" },
+    { label: "Cove" },
+    { label: "Dakota" },
+    { label: "Damai" },
+    { label: "Dhoby Ghaut" },
+    { label: "Dover" },
+    { label: "Downtown" },
+    { label: "Esplanade" },
+    { label: "Eunos" },
+    { label: "Expo" },
+    { label: "Fajar" },
+    { label: "Farmway" },
+    { label: "Farrer Park" },
+    { label: "Farrer Road" },
+    { label: "Fernvale" },
+    { label: "Fort Canning" },
+    { label: "Geylang Bahru" },
+    { label: "Gul Circle" },
+    { label: "Harbourfront" },
+    { label: "Haw Par Villa" },
+    { label: "Hillview" },
+    { label: "Holland Village" },
+    { label: "Hougang" },
+    { label: "Jalan Besar" },
+    { label: "Jelapang" },
+    { label: "Joo Koon" },
+    { label: "Jurong East" },
+    { label: "Kadaloor" },
+    { label: "Kaki Bukit" },
+    { label: "Kallang" },
+    { label: "Kangkar" },
+    { label: "Keat Hong" },
+    { label: "Kembangan" },
+    { label: "Kent Ridge" },
+    { label: "Khatib" },
+    { label: "King Albert Park" },
+    { label: "Kovan" },
+    { label: "Kranji" },
+    { label: "Kupang" },
+    { label: "Labrador Park" },
+    { label: "Lakeside" },
+    { label: "Lavender" },
+    { label: "Layar" },
+    { label: "Little India" },
+    { label: "Lorong Chuan" },
+    { label: "Macpherson" },
+    { label: "Marina Bay" },
+    { label: "Marina South Pier" },
+    { label: "Marine Parade" },
+    { label: "Marsiling" },
+    { label: "Marymount" },
+    { label: "Mattar" },
+    { label: "Meridian" },
+    { label: "Mountbatten" },
+    { label: "Newton" },
+    { label: "Nibong" },
+    { label: "Nicoll Highway" },
+    { label: "Novena" },
+    { label: "Oasis" },
+    { label: "One-north" },
+    { label: "Orchard" },
+    { label: "Outram Park" },
+    { label: "Pasir Panjang" },
+    { label: "Pasir Ris" },
+    { label: "Paya Lebar" },
+    { label: "Pending " },
+    { label: "Petir" },
+    { label: "Phoenix " },
+    { label: "Pioneer" },
+    { label: "Potong Pasir" },
+    { label: "Promenade" },
+    { label: "Punggol " },
+    { label: "Punggol Point " },
+    { label: "Queenstown" },
+    { label: "Raffles Place" },
+    { label: "Ranggung" },
+    { label: "Redhill" },
+    { label: "Renjong" },
+    { label: "Riviera" },
+    { label: "Rochor" },
+    { label: "Rumbia" },
+    { label: "Sam Kee" },
+    { label: "Samudera" },
+    { label: "Segar" },
+    { label: "Sembawang" },
+    { label: "Sengkang" },
+    { label: "Senja" },
+    { label: "Serangoon" },
+    { label: "Simei" },
+    { label: "Sixth Avenue" },
+    { label: "Somerset" },
+    { label: "Soo Teck" },
+    { label: "South View" },
+    { label: "Stadium" },
+    { label: "Stevens" },
+    { label: "Sumang" },
+    { label: "Tai Seng" },
+    { label: "Tampines East" },
+    { label: "Tampines" },
+    { label: "Tampines West" },
+    { label: "Tan Kah Kee" },
+    { label: "Tanah Merah" },
+    { label: "Tanjong Pagar" },
+    { label: "Teck Lee" },
+    { label: "Teck Whye" },
+    { label: "Telok Ayer" },
+    { label: "Telok Blangah" },
+    { label: "Ten Mile Junction" },
+    { label: "Thanggam" },
+    { label: "Tiong Bahru" },
+    { label: "Toa Payoh" },
+    { label: "Tongkang" },
+    { label: "Tuas Crescent" },
+    { label: "Tuas Link" },
+    { label: "Tuas West Road" },
+    { label: "Ubi" },
+    { label: "Upper Changi" },
+    { label: "Woodlands" },
+    { label: "Woodlands South" },
+    { label: "Woodleigh" },
+    { label: "Yew Tee" },
+    { label: "Yio Chu Kang" },
+    { label: "Yishun" }
   ];
 
   $("#userInputLocation").catcomplete({
@@ -483,7 +483,7 @@ $(function() {
   });
 });
 
-//AUTOCOMPLETE FOR CUISINE
+//Autocomplete for Cuisine, Food Restaurant Type
 $(function() {
   $.widget("custom.catcomplete", $.ui.autocomplete, {
     _create: function() {
@@ -514,6 +514,7 @@ $(function() {
     { label: "Hawker Centre", category: "Establishment Type" },
     { label: "Pub & Bar", category: "Establishment Type" },
     { label: "Restaurant", category: "Establishment Type" },
+    { label: "Halal", category: "Establishment Type" },
     { label: "Japanese", category: "Asian" },
     { label: "Chinese", category: "Asian" },
     { label: "Asian Fusion", category: "Asian" },
@@ -564,7 +565,6 @@ $(function() {
     { label: "Barbeque", category: "Food" },
     { label: "Noodles", category: "Food" },
     { label: "Bubble Tea", category: "Food" },
-    { label: "Tapas/Small Plates", category: "Food" },
     { label: "Hot Pot", category: "Food" },
     { label: "Izakaya", category: "Food" },
     { label: "Chicken", category: "Food" },
@@ -576,7 +576,6 @@ $(function() {
     { label: "Creperies", category: "Food" },
     { label: "Vegan", category: "Dietary Options" },
     { label: "Vegetarian", category: "Dietary Options" },
-    { label: "Halal", category: "Dietary Options" }
   ];
 
   $("#userInputCuisine").catcomplete({
@@ -606,7 +605,7 @@ $(function() {
   //show map
   setupMap();
 
-  //To trigger Region change via Region Select HTML
+  //To trigger Location change via Location Input Box
   $('#userInputLocation').change(function() {
     let location_code = $(this).val();
     console.log(locations[location_code]);
@@ -616,38 +615,42 @@ $(function() {
       zoom: 14
     });
   });
-  
-// get user location
-$('#buttonUserLocation').click(function() {
-  
-  $("#buttonUserLocation").prop("disabled", true);
-  
-map.addControl(geolocate);
 
-geolocate.on('geolocate', function(e) {
+  // Get user's current location
+  $('#buttonUserLocation').click(function() {
+
+    //Disable button after button is pressed
+    $("#buttonUserLocation").prop("disabled", true);
+
+    //Add geolocate icon to map
+    map.addControl(geolocate);
+
+
+    //Get long/lat of user's location, show it in Location input box, disable Location input box, then hide popover
+    geolocate.on('geolocate', function(e) {
       let lon = e.coords.longitude;
-      let lat = e.coords.latitude
+      let lat = e.coords.latitude;
       let position = $('#userInputLocation').val([lon, lat]);
       $('.popover').popover('hide');
-      $("#userInputLocation").attr( "disabled", true );
-      
-}).then(function(response){
-  
-   map.flyTo({
-      center: position,
-      zoom: 14
+      $("#userInputLocation").attr("disabled", true);
+
+    }).then(function(response) {
+
+      map.flyTo({
+        center: position,
+        zoom: 14
+      });
     });
-});
-});
+  });
 
 
 
-  // To trigger Cuisine change via Cuisine Searhbox HTML
-  $('#buttonCuisine').click(function() {
+  // To trigger Cuisine change via Cuisine Input Box
+  $('#buttonSearch').click(function() {
     let center = map.getCenter();
     cuisine_code = $('#userInputCuisine').val();
     console.log(cuisines[cuisine_code]);
-    
+
     axios.get(API_URL + "/venues/explore", {
       params: {
         "client_id": CLIENT_ID,
@@ -659,30 +662,31 @@ geolocate.on('geolocate', function(e) {
         "query": cuisines[cuisine_code] // what we are searching for 
       }
     }).then(function(response) {
-      
-      $("#results").empty();
-      
 
-      
+      //Empty previous search results and markers each time Search Button is pressed
+      $("#results").empty();
       for (let each_marker of all_markers) {
         each_marker.remove();
       }
-
       all_markers = [];
 
+      //Define API terms
       results = response.data.response.groups[0].items;
       console.log(results);
+
+      //To allocate a number for each search result
       let count = 1;
 
+      //Create marker
       for (let r of results) {
-        
-        var el = document.createElement('div');  el.className = 'marker';
+        var el = document.createElement('div');
+        el.className = 'marker';
         let marker = new mapboxgl.Marker(el);
-
         marker.setLngLat([r.venue.location.lng, r.venue.location.lat]);
-        marker.addTo(map); // <-- map is a global variable holding the mapboxgl Map object
- 
- let mediaObject = `
+        marker.addTo(map); //
+
+        //Create results
+        let mediaObject = `
 <div class="container-fluid col-lg-11 col-sm-10 py-3 my-3 mx-auto" id='mediaObject'>
     <div class="row">
         <div class="col-lg-12 col-sm-8"><h5 class="redirectmarker">${count}. ${r.venue.name} <img class='foodIcons' src='${r.venue.categories[0].icon.prefix}32${r.venue.categories[0].icon.suffix}'/></h5></div>
@@ -699,21 +703,23 @@ geolocate.on('geolocate', function(e) {
     </div>
 </div>`;
 
- 
-        //createPopUp(r)
+
+        //Results to appear on page
         $("#results").append(mediaObject);
-        
+
         // if Object.length === 0; {
         //   alert("Please search for another category");
         // }
-        
+
+
+        //Distance between marker and popup
         let popup = new mapboxgl.Popup({
           offset: 10
         });
 
-        //popup content: name, icon, address, postal code
+        //Popup content: name, icon, address, postal code
         popup.setHTML("<img style=\"background-color: #D20055;\" src=" + r.venue.categories[0].icon.prefix + "32" + r.venue.categories[0].icon.suffix + ">" +
-        "<div style=\"text: align-center;\"><b>" + r.venue.name + "</b></div>"
+          "<div style=\"text: align-center;\"><b>" + r.venue.name + "</b></div>"
         );
 
 
@@ -727,13 +733,15 @@ geolocate.on('geolocate', function(e) {
 
 });
 
+
+//Toggle animation and popup between clicking on each location in the results column
 $(document).on('click', '.redirectmarker', function() {
   // console.log(all_markers[$(this).text()[0] -1]);
-  for(let m of all_markers) 
-    if(m.getPopup().isOpen() == true)
+  for (let m of all_markers)
+    if (m.getPopup().isOpen() == true)
       m.togglePopup();
   let marker = all_markers[$(this).text()[0] - 1];
-  
+
   map.flyTo({
     center: marker._lngLat,
     zoom: 18
@@ -741,15 +749,16 @@ $(document).on('click', '.redirectmarker', function() {
   marker.togglePopup();
 });
 
-  $('#buttonReset').click(function() {
-    map.removeControl(geolocate);
-    $("#userInputLocation").attr( "disabled", false );
-    $('#userInputLocation').val('');
-    $('#userInputCuisine').val('');
-    $('#results').empty();
-    $("#buttonUserLocation").prop("disabled", false);
-    
-    
+//Reset and empty input box, map, re-enable geolocation button and activate location input box
+$('#buttonReset').click(function() {
+  map.removeControl(geolocate);
+  $("#userInputLocation").attr("disabled", false);
+  $('#userInputLocation').val('');
+  $('#userInputCuisine').val('');
+  $('#results').empty();
+  $("#buttonUserLocation").prop("disabled", false);
+
+
   map.flyTo({
     container: 'map', // which html element it should be
     style: 'mapbox://styles/mapbox/streets-v11', // how it should look like
@@ -757,31 +766,31 @@ $(document).on('click', '.redirectmarker', function() {
     zoom: 2, // how zoomed we are
     maxBounds: bounds
   })
-  
-        for (let each_marker of all_markers) {
-        each_marker.remove();
-      }
 
-      all_markers = [];
+  for (let each_marker of all_markers) {
+    each_marker.remove();
+  }
+
+  all_markers = [];
 })
 
 
 
-
+//Back to Top Button
 const backToTopButton = document.querySelector("#back-to-top-btn");
 
 window.addEventListener("scroll", scrollFunction);
 
 function scrollFunction() {
   if (window.pageYOffset > 300) { // Show backToTopButton
-    if(!backToTopButton.classList.contains("btnEntrance")) {
+    if (!backToTopButton.classList.contains("btnEntrance")) {
       backToTopButton.classList.remove("btnExit");
       backToTopButton.classList.add("btnEntrance");
       backToTopButton.style.display = "block";
     }
   }
   else { // Hide backToTopButton
-    if(backToTopButton.classList.contains("btnEntrance")) {
+    if (backToTopButton.classList.contains("btnEntrance")) {
       backToTopButton.classList.remove("btnEntrance");
       backToTopButton.classList.add("btnExit");
       setTimeout(function() {
@@ -803,7 +812,7 @@ function smoothScrollBackToTop() {
   const distance = targetPosition - startPosition;
   const duration = 750;
   let start = null;
-  
+
   window.requestAnimationFrame(step);
 
   function step(timestamp) {
@@ -815,8 +824,8 @@ function smoothScrollBackToTop() {
 }
 
 function easeInOutCubic(t, b, c, d) {
-	t /= d/2;
-	if (t < 1) return c/2*t*t*t + b;
-	t -= 2;
-	return c/2*(t*t*t + 2) + b;
+  t /= d / 2;
+  if (t < 1) return c / 2 * t * t * t + b;
+  t -= 2;
+  return c / 2 * (t * t * t + 2) + b;
 };

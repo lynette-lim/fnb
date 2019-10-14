@@ -1,15 +1,22 @@
 #logo {
-    display: block;
+  display: block;
 }
 
 /*Searchbox layout*/
-#userInputCuisine, #userInputLocation {
-  background-repeat: no-repeat; /* Do not repeat the icon image */
-  width: 100%; /* Full-width */
-  padding: 12px 20px 12px 50px; /* Add some padding */
-  border: 1px solid #ddd; /* Add a grey border */
+
+#userInputCuisine,
+#userInputLocation {
+  background-repeat: no-repeat;
+  /* Do not repeat the icon image */
+  width: 100%;
+  /* Full-width */
+  padding: 12px 20px 12px 50px;
+  /* Add some padding */
+  border: 1px solid #ddd;
+  /* Add a grey border */
   border-radius: 30px;
-  margin-bottom: 12px; /* Add some space below the input */
+  margin-bottom: 12px;
+  /* Add some space below the input */
 }
 
 #userInputCuisine {
@@ -32,16 +39,19 @@ input {
 
 /*Button layout*/
 
-#buttonCuisine, #buttonReset {
+#buttonSearch,
+#buttonReset {
   border-color: transparent;
-  padding: 12px 5px 12px ; /* Add some padding */
+  padding: 12px 5px 12px;
+  /* Add some padding */
   border-radius: 30px;
-  margin-bottom: 12px; /* Add some space below the input */
+  margin-bottom: 12px;
+  /* Add some space below the input */
 }
 
-#buttonCuisine {
+#buttonSearch {
   width: 80px;
-  margin-right:1%;
+  margin-right: 1%;
 }
 
 #buttonReset {
@@ -74,10 +84,11 @@ input {
 }
 
 /*Autocomplete layout*/
+
 .ui-autocomplete {
-    max-height: 200px;
-    overflow-y: auto;
-    overflow-x: hidden;
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .ui-autocomplete :hover {
@@ -86,23 +97,24 @@ input {
 
 
 .ui-autocomplete-category {
-    color: #D20055;
-    font-weight: bold;
-    padding: .2em .4em;
-    margin: .8em 0 .2em;
-    line-height: 1.5;
+  color: #D20055;
+  font-weight: bold;
+  padding: .2em .4em;
+  margin: .8em 0 .2em;
+  line-height: 1.5;
 }
 
 .ui-autocomplete .ui-autocomplete-category:focus {
-    font-weight: normal;
+  font-weight: normal;
 }
 
 
 
 
 /*Mapbox*/
+
 .redirectmarker {
-    font-family: 'Quicksand', sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .marker {
@@ -119,19 +131,19 @@ input {
   font-family: 'Open Sans', sans-serif;
   font-weight: bold;
   background-color: white;
-  
+
 }
 
 #results {
-    height: 100vh;
-    overflow-x: auto;
-    overflow-y: auto;
-    background-color: rgba(210,0,85,0.3);
+  height: 100vh;
+  overflow-x: auto;
+  overflow-y: auto;
+  background-color: rgba(210, 0, 85, 0.3);
 }
 
 #mediaObject {
-    background-color: white;
-    border-radius: 15px;
+  background-color: white;
+  border-radius: 15px;
 }
 
 .foodIcons {
@@ -142,17 +154,18 @@ input {
 /*Main layout*/
 
 html {
-    min-height:100%;
+  min-height: 100%;
 }
 
 body {
   background-image: linear-gradient(to top, #D20055, #BC004C, #FF0066);
-  height:100%;
+  height: 100%;
   font-family: 'Open Sans', sans-serif;
   font-size: 15px;
 }
 
-html, body {
+html,
+body {
   overflow-x: hidden;
 }
 
@@ -173,103 +186,111 @@ html, body {
 }
 
 /*To prevent the color of the Search Button from clashing with background color*/
-@media (min-width: 567px){
 
-  #buttonCuisine {
-  background-color: #D20055;
-  color: white;
+@media (min-width: 567px) {
+
+  #buttonSearch {
+    background-color: #D20055;
+    color: white;
   }
-  
-  #buttonCuisine:hover, #buttonCuisine:focus {
+
+  #buttonSearch:hover,
+  #buttonSearch:focus {
     color: #D20055;
     background-color: #DDDDDD;
     border: 2px solid #D20055;
   }
-  
+
   #buttonReset {
-  color: #D20055;
+    color: #D20055;
   }
-  
-  #buttonReset:hover, #buttonReset:focus {
+
+  #buttonReset:hover,
+  #buttonReset:focus {
     color: #DDDDDD;
     background-color: #D20055;
     border: 2px solid #DDDDDD;
   }
-  
+
   #buttonUserLocation:hover #buttonUserLocation:focus {
     background-color: white;
   }
 }
 
 @media (max-width: 566px) {
-  
-  #buttonCuisine {
-  color: #D20055;
+
+  #buttonSearch {
+    color: #D20055;
   }
-  
+
   #buttonReset {
-  background-color: #D20055;
-  color: white;
-  border: 1.5px solid #ddd;
+    background-color: #D20055;
+    color: white;
+    border: 1.5px solid #ddd;
   }
 }
 
 /*FOR GEOLOCATE BUTTON (desktop view)*/
+
 @media (min-width: 1367px) {
-    #buttonUserLocation {
+  #buttonUserLocation {
     height: 47px;
     width: 46px;
-    }
+  }
 }
 
 /*FOR DESKTOP VIEW AND IPAD PRO IN LANDSCAPE MODE*/
-@media (min-width: 1366px){
+
+@media (min-width: 1366px) {
   #logo {
     margin-left: 30%;
-}
-    .userInput {
-      position: relative;
-      z-index:1;
-      height: 100vh;
-    }
-    
-    #carouselHeader, .carouselInner {
-      position: absolute;
-      z-index:-1;
-      height: calc(100vh - 50px);
-    }
+  }
+  .userInput {
+    position: relative;
+    z-index: 1;
+    height: 100vh;
+  }
 
-    #map {
-      height: 100vh !important;
-      position: absolute;
-      padding: 0px;
-    }
-    
+  #carouselHeader,
+  .carouselInner {
+    position: absolute;
+    z-index: -1;
+    height: calc(100vh - 50px);
+  }
+
+  #map {
+    height: 100vh !important;
+    position: absolute;
+    padding: 0px;
+  }
+
 }
 
 /*FOR IPAD PRO AND SMALLER*/
-@media (max-width: 1366px){
-    #logo {
+
+@media (max-width: 1366px) {
+  #logo {
     margin-left: 15%;
     padding-bottom: 5%;
-}
-    .userInput {
-      position: relative;
-      z-index:1;
-    }
-    
-    #carouselHeader, .carouselInner {
-      position: absolute;
-      z-index:-1;
-    }
-    
-    #map {
-      height: 50vh;
-    }
-    
-    body {
-      font-size: 12px;
-    }
+  }
+  .userInput {
+    position: relative;
+    z-index: 1;
+  }
+
+  #carouselHeader,
+  .carouselInner {
+    position: absolute;
+    z-index: -1;
+  }
+
+  #map {
+    height: 50vh;
+  }
+
+  body {
+    font-size: 12px;
+  }
 }
 
 
@@ -294,19 +315,24 @@ html, body {
   transition-timing-function: ease-in-out;
   transition-property: background-color, color;
 }
-#back-to-top-btn:hover, #back-to-top-btn:focus {
+
+#back-to-top-btn:hover,
+#back-to-top-btn:focus {
   background-color: white;
-  color: #D20055;  
+  color: #D20055;
 }
 
 
 /* Animations */
+
 .btnEntrance {
   animation-duration: 0.5s;
   animation-fill-mode: both;
   animation-name: btnEntrance;
 }
+
 /* zoomIn */
+
 /* @keyframes btnEntrance { 
   from {
     opacity: 0;
@@ -318,6 +344,7 @@ html, body {
 } */
 
 /* fadeInUp */
+
 @keyframes btnEntrance {
   from {
     opacity: 0;
@@ -331,10 +358,12 @@ html, body {
 
 .btnExit {
   animation-duration: 0.25s;
-  animation-fill-mode: both;  
+  animation-fill-mode: both;
   animation-name: btnExit;
 }
+
 /* zoomOut */
+
 /* @keyframes btnExit {
   from {
     opacity: 1;
@@ -346,6 +375,7 @@ html, body {
 } */
 
 /* fadeOutDown */
+
 @keyframes btnExit {
   from {
     opacity: 1;
