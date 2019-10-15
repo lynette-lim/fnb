@@ -658,7 +658,7 @@ $(function() {
         "v": '20192609', // v for is the version
         "limit": 20, // limit is how many results returned
         "ll": center.lat + "," + center.lng, // latitude/longtitude
-        "radius": 250,
+        "radius": 500,
         "query": cuisines[cuisine_code] // what we are searching for 
       }
     }).then(function(response) {

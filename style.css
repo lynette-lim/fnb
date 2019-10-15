@@ -95,7 +95,6 @@ input {
   background-color: #D20055;
 }
 
-
 .ui-autocomplete-category {
   color: #D20055;
   font-weight: bold;
@@ -115,6 +114,11 @@ input {
 
 .redirectmarker {
   font-family: 'Quicksand', sans-serif;
+}
+
+.redirectmarker:hover {
+  background-color: #D20055;
+  color: white;
 }
 
 .marker {
@@ -183,6 +187,10 @@ body {
 ::-webkit-scrollbar-thumb {
   background: #D20055;
   border-radius: 0;
+}
+
+button:focus, input:focus {
+  outline:0;
 }
 
 /*To prevent the color of the Search Button from clashing with background color*/
