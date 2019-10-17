@@ -2,6 +2,8 @@
 ## Stream Two Project: Interactive Frontend Development - Code Institute
 This web application serves as a F&B locator that will display all F&B business based in Singapore through an interactive search function and map.
 ## Demo
+<a href="https://gph.is/g/ajyX259"><img src="https://media.giphy.com/media/XGCM53Cjj0dk7YGycT/giphy.gif"/></a>
+
 A live demo can be found [here](https://lynette-lyf.github.io/fnb/).
 ## UX
 The simplistic design of the website puts emphasis onto the search function and interactive map. Inspired by Yelp’s search engine, some eye-catching food photos are put into a carousel that underlays the search boxes. The use of icons in the search engine elevates the interface in a way that makes it user-friendly and effective in communicating the purpose of each function. The colour scheme is heavily inspired by the iconic pink logo of Foodpanda, a leading global food delivery brand.
@@ -24,6 +26,8 @@ Adding an animated scroll feature that will pan to map upon clicking on the geol
 ## Testing
 #### 1)	Filter by location:
 **a) Geolocation (Only exclusive to IP addresses in Singapore)** 
+
+<a href="https://gph.is/g/E06kK7m"><img src="https://media.giphy.com/media/cl3BML06bSfQ9IFkyh/giphy.gif"/></a>
 
 Upon clicking on the geolocate button (beside the location input box), a popover will appear showing the instructions on how to toggle the function. Once the user has followed the instructions by toggling the geolocate button (on the map), there will be a popup requesting permission for the user’s location - depending on the user’s browser. Once the user has enabled location services, the map will pan and zoom to the user's location, the latitude and longitude will appear in the location input box and location input box will be disabled so that the user will know that the function is working and can proceed to the next step - typing their preferred cuisine, establishment or food filters into the next input box.
 
