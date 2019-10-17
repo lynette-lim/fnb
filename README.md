@@ -2,8 +2,7 @@
 ## Stream Two Project: Interactive Frontend Development - Code Institute
 This web application serves as a F&B locator that will display all F&B business based in Singapore through an interactive search function and map.
 ## Demo
-A live demo can be found here.
-https://lynette-lyf.github.io/fnb/
+A live demo can be found [here](https://lynette-lyf.github.io/fnb/).
 ## UX
 The simplistic design of the website puts emphasis onto the search function and interactive map. Inspired by Yelp’s search engine, some eye-catching food photos are put into a carousel that underlays the search boxes. The use of icons in the search engine elevates the interface in a way that makes it user-friendly and effective in communicating the purpose of each function. The colour scheme is heavily inspired by the iconic pink logo of Foodpanda, a leading global food delivery brand.
 Both locals and tourists visiting Singapore and might find the website useful in locating various F&B establishments via location and filtering them by cuisine, establishment type, or food.
